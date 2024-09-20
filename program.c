@@ -1,46 +1,30 @@
-//ArmStrong with Recursion
-
+//Fibonacci using recursion
 #include<stdio.h>
-#include<math.h>
-
-int countDigits(int n)
-{    
-       if(n==0)
-       {
-       	return 0;
-	   }
-	   else
-	   {
-	   	return 1+countDigits(n/10);
-	   }
-     	
-}
-
-int armStrong(int n,int digits)
-{	if(n==0)
+int fibonacci(int n)
+{
+	if(n==0)
 	{
 		return 0;
 	}
-	return pow(n%10,digits)+armStrong(n/10,digits);
+	else if(n==1)
+	{
+		return 1;
+		
+	}
+	else
+	{
+		return fibonacci(n-1)+fibonacci(n-2);
+	}
 }
 
 int main()
 {
-	int n;
-	printf("Enter the Number: ");
+	int n,i;
+	printf("Enter the Length of fibnocci Series: ");
 	scanf("%d",&n);
-	printf("No of Digits: ");
-	int digits=countDigits(n);
-	printf("%d",digits);
-	printf("\n");
-	int result=armStrong(n,digits);
-	if(result==n)
+	printf("---------Fibonacci Series-----------\n");
+	for(i=0;i<n;i++)
 	{
-		printf("It is ArmStrong Number.");
+		printf("%d ",fibonacci(i));
 	}
-	else
-	{
-		printf("It is not ArmStrong Number.");
-	}
-	
 }
